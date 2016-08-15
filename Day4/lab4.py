@@ -1,8 +1,8 @@
 #Go to https://polisci.wustl.edu/faculty/specialization
 #Go to the page for each of the professors.
 #Create a .csv file with the following information for each professor:
-# 	-Specialization
-# 	-Name ***** got it.
+# 	-Specialization *****
+# 	-Name *****
 # 	-Title
 # 	-E-mail
 # 	-Web page
@@ -29,10 +29,14 @@ for i in names:
 def Name(self):
 	return soup.find_all('a',{'class':"person-view-primary-field" })[self].get_text()
 
-
-urls = soup.find_all('a',{'href'})
-for i in names:
+# a for loop that returns all fields
+fields = soup.find_all('h3')
+for i in fields:
 	print i.get_text()
+
+# function that returns field
+def Field(self):
+	return soup.find_all('h3')[self].get_text()
 
 
 
