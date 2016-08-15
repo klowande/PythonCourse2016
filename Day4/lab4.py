@@ -34,19 +34,19 @@ for subfield in subfields:
 		else:
 			print subfield.get_text()
 			
-# for loop that returns all ranks
+# for loop that returns all names and ranks - can't get it to skip the names
 ranks = soup.find_all('div',{'class':re.compile('views-row+.*') })
 for rank in ranks:
-	for sibling in rank.next_siblings:
-		if sibling in ranks:
-			break
-		else:
-			print rank.get_text()
+	print rank.get_text(", ",strip=True)
 
+# urls
+urls = []
+for link in ranks:
+    urls.append(link.get('a'))
 
-
-
-
+for site in urls:
+	webpage = web_page + site
+	print webpage
 
 
 
