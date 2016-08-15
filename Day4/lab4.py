@@ -25,24 +25,23 @@ names = soup.find_all('a',{'class':"person-view-primary-field" })
 for i in names:
 	print i.get_text()
 
-# function that gets a name	
-def Name(self):
-	return soup.find_all('a',{'class':"person-view-primary-field" })[self].get_text()
-
-# a for loop that returns all fields
-fields = soup.find_all('h3')
-for i in fields:
-	print i.get_text()
-
-# function that returns field
-def Field(self):
-	return soup.find_all('h3')[self].get_text()
-
-
-
-
-
-
+# for loop that returns all fields
+subfields=soup.find_all('h3')
+for subfield in subfields:
+	for sibling in subfield.next_siblings:
+		if sibling in subfields:
+			break
+		else:
+			print subfield.get_text()
+			
+# for loop that returns all ranks
+ranks = soup.find_all('div',{'class':re.compile('views-row+.*') })
+for rank in ranks:
+	for sibling in rank.next_siblings:
+		if sibling in ranks:
+			break
+		else:
+			print rank.get_text()
 
 
 
@@ -66,8 +65,12 @@ content = soup.find_all('div',{'class':'view-content'})[0]
 content.descendants
 for j in content.children:
 	print j
-
-    
-    
+ # function that gets a name	
+def Name(self):
+	return soup.find_all('a',{'class':"person-view-primary-field" })[self].get_text()
+	
+# function that returns field
+def Field(self):
+	return soup.find_all('h3')[self].get_text()
     
 
