@@ -3,7 +3,6 @@
 #$ easy_install pip
 #$ sudo pip install beautifulsoup4
 
-
 from bs4 import BeautifulSoup
 import urllib2 
 import random
@@ -44,7 +43,6 @@ mysection.a #Gives the 'a' tag within the 'div' tag
 mysection.find_all('a') #Gives the list of all 'a' tags within the 'div' tag
 mysection.get_text()
 
-
 # Creating a tree of objects
 
 mysection.contents #Gives a list of all children
@@ -67,7 +65,7 @@ mysection.descendants #Creates an iterator for children, grandchildren, etc.
 # Function to save a web page
 
 def download_page(address,path,filename,wait=5):
-	time.sleep(random.uniform(0,wait))
+	time.sleep(random.uniform(0,wait)) # a way to work around webpage restrictions on scraping
 	page = urllib2.urlopen(address)
 	page_content = page.read()
 	if os.path.exists(path+filename)==False:

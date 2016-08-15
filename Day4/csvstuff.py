@@ -1,10 +1,10 @@
 import csv
 
-#Open a file stream and create a CSV writer object
+#Open a file stream and create a CSV writer object - the incorrect way
 f = open('test.csv', 'wb')
 my_writer = csv.writer(f)
 
-for i in range(1, 100):
+for i in range(1, 100): # from 1 to 100, write a row with i and i - 1
   my_writer.writerow([i, i-1])
    
 f.flush()
@@ -18,12 +18,10 @@ with open('test1.csv', 'wb') as f:
     
 #How about with field names
 with open('test_with_fields.csv', 'wb') as f:
-  my_writer = csv.DictWriter(f, fieldnames=("A", "B"))
+  my_writer = csv.DictWriter(f, fieldnames=("A", "B")) # variable names, determines order.
   my_writer.writeheader()
   for i in range(1, 100):
     my_writer.writerow({"B":i, "A":i-1})
-    
-    
 
 #Now lets read some things
 with open('test.csv', 'rb') as f:

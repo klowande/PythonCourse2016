@@ -1,4 +1,5 @@
 import sys
+# cd '/Users/kslowande/Box Sync/WUSTL Postdoc/Python Course/PythonCourse2016/Day4/'
 
 #The cleanest way to handle files (gracefully handles exceptions)
 with open('readfile.txt') as f:
@@ -33,7 +34,7 @@ print "\nManually Opened File\n********************\n"
 print f.read()
 f.close()
 
-#Writing files is easy, open command takes r, w, a, plus some others
+#Writing files is easy, open command takes r (reading), w (writing), a (appending), plus some others
 with open('writefile.txt', 'w') as f:
   #wipes the file clean and opens it
   f.write("Hi guys.")
