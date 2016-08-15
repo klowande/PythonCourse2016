@@ -20,57 +20,39 @@ web_page = urllib2.urlopen(web_address)
 soup = BeautifulSoup(web_page.read())
 soup.prettify()
 
-# for loop that prints all names
-names = soup.find_all('a',{'class':"person-view-primary-field" })
-for i in names:
-	print i.get_text()
+names = []
+titles = []
+fields = []
 
-# for loop that returns all fields
+faculty = soup.find_all('div',{'class':re.compile('views-row+.*') })
+for i in range(0,len(faculty)):
+	names.append(faculty[i].find('a').get_text())
+	titles.append(faculty[i].contents[2])
+
 subfields=soup.find_all('h3')
 for subfield in subfields:
 	for sibling in subfield.next_siblings:
 		if sibling in subfields:
 			break
 		else:
-			print subfield.get_text()
-			
-# for loop that returns all names and ranks - can't get it to skip the names
-ranks = soup.find_all('div',{'class':re.compile('views-row+.*') })
-for rank in ranks:
-	print rank.get_text(", ",strip=True)
+			try:
+				sibling.get_text()
+				fields.append(subfield.get_text())
+			except:
+				pass
 
-# urls
+			
+			
+			
+
+
+
+# urls - doesn't work. ---------
 urls = []
-for link in ranks:
-    urls.append(link.get('a'))
+for link in soup.find_all('a'):
+    urls.append(link.get('href'))
 
 for site in urls:
 	webpage = web_page + site
 	print webpage
-
-
-
-
-
-
-
-# gets a list of urls
-urls = soup.find_all('href')
-for j in urls:
-	print j.get_text()
-	
-
-# children
-content = soup.find_all('div',{'class':'view-content'})[0]
-content.descendants
-for j in content.children:
-	print j
- # function that gets a name	
-def Name(self):
-	return soup.find_all('a',{'class':"person-view-primary-field" })[self].get_text()
-	
-# function that returns field
-def Field(self):
-	return soup.find_all('h3')[self].get_text()
-    
 
