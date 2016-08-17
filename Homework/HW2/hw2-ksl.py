@@ -39,7 +39,7 @@ def process_pet(div_tag):
 #	div 
 
 # for loop to loop through each entry
-# for i in 
+# for i in soup.find_all('div',{'class':re.compile('views-row+.*') }):
 
 f.close()
 
