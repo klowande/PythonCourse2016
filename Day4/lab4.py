@@ -3,16 +3,13 @@
 #Create a .csv file with the following information for each professor:
 # 	-Specialization *****
 # 	-Name *****
-# 	-Title
+# 	-Title *****
 # 	-E-mail
 # 	-Web page
 	
 from bs4 import BeautifulSoup
 import urllib2 
-import random
-import time
-import os
-import re
+import csv
 
 web_address='https://polisci.wustl.edu/faculty/specialization'
 web_page = urllib2.urlopen(web_address)
@@ -41,18 +38,11 @@ for subfield in subfields:
 			except:
 				pass
 
-			
-			
-			
-
-
-
-# urls - doesn't work. ---------
-urls = []
-for link in soup.find_all('a'):
-    urls.append(link.get('href'))
-
-for site in urls:
-	webpage = web_page + site
-	print webpage
-
+# writing the file
+with open('wustl-faculty.csv', 'w') as f:
+  my_writer = csv.DictWriter(f, fieldnames=("Name", "Title", "Field")) # variable names, determines order.
+  my_writer.writeheader()
+  for i in range(0, len(faculty)):
+    my_writer.writerow({"Name": names[i], "Title": titles[i], "Field": fields[i]})
+    
+    
