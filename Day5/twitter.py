@@ -10,6 +10,11 @@ import time
 # copy/paste or import twitter-auth.py
 
 
+#import imp
+#twitt=imp.load_source('twitt', '/home/david/Dropbox/Code/twitter_api.py')
+#twitt.api
+
+
 #See rate limit
 api.rate_limit_status()
 
