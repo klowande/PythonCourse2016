@@ -60,6 +60,9 @@ data[data['ev']>40]
 # TODO: what's the minimum population in 1990? 
 # in which state was that? 
 # how many states had over 35 electoral votes in 2010? 
+data['st'][min(data['pop'])]
+
+len(data[data['ev']>35][data['yr']==2010])
 
 # we can also apply functions to columns
 format = lambda x: '%.2f' % x 
@@ -76,12 +79,18 @@ data.describe()
 data.std()
 
 # how much did total population change between 1990 and 2010? 
+for i in [1990,2010]:
+	total = sum(data['pop'][data['yr']==i]) # +42,099,904
+
 # TODO: how many people did the average congressperson represent in 1990?
 
 # we could also represent a single variable as a series with hierarchical indexing
 p = Series(data['pop'].values, index=[data['st'], data['yr']])
 p['North Carolina']
 p.mean(level='st')
+
+p.std()
+
 # TODO: calculate standard deviation by year
 
 p.swaplevel('st', 'yr')
