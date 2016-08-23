@@ -27,8 +27,9 @@ print sum([len(ring[node]) for node in ring.keys()])/2
 
 
 # Grid Network
-# TODO: create a square graph with 256 nodes and count the edges 
+# TODO: create a square graph with 256 nodes (16x16) and count the edges 
 # TODO: define a function countEdges
+
 
 
 # Social Network
@@ -61,7 +62,11 @@ makeLink(movies, ah, ms) # Devil Wears Prada
 makeLink(movies, ah, jr) # Valentine's Day
 
 # How many nodes in movies?
+print len(movies)
+
 # How many edges in movies?
+print sum([len(movies[node]) for node in movies.keys()])/2 
+
 
 def tour(graph, nodes):
   for i in range(len(nodes)):
@@ -97,13 +102,24 @@ def findPath(graph, start, end, path=[]):
                 if newpath: return newpath
         return None
 
-print findPath(movies, jr, ms)
-
+print findPath(movies, kb, rd)
 
 # TODO: implement findShortestPath()
-# print findShortestPath(movies, ms, ss)
+def findShortestPath(graph, start, end):
+	path1 = findPath(graph, start, end)
+	path2 = findPath(graph, end, start)
+	if len(path1) > len(path2): return path2
+	return path1
+# works for this network. But probably not the right answer.
+
+
+print findShortestPath(movies, ms, ss)
+
+def findAllPaths(graph,start,end):
+
 
 # TODO: implement findAllPaths() to find all paths between two nodes
+
 # allPaths = findAllPaths(movies, jr, ms)
 # for path in allPaths:
 #   print path

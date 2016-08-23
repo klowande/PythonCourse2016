@@ -1,6 +1,6 @@
 ###				Tuple				###
 
-#Tuples are immutable
+# Tuples are immutable
 
 my_tuple=(1,'b',3,'d',5,'b')
 
@@ -19,13 +19,13 @@ for i in range(0,10):
 
 zip(my_list,my_square_list)
 
-#.index and .count methods work the same as above
+# .index and .count methods work the same as above
 
-my_list.reverse() #Don't forget to add the parentheses!
+my_list.reverse() #Don't forget to add the parentheses! Changes the actual list
 my_list.sort() #Don't forget to add the parentheses!
 my_list.append(10)
 my_list.extend(my_square_list)
-my_list.insert(1,'+')
+my_list.insert(1,'+') # adds it at a particular position. Does not override entry.
 my_list.remove('+') #Removes the first occurence '+'
 
 # enumerate function
@@ -44,7 +44,7 @@ for number,letter in enumerate(letters):
 	
 my_list=[1,2,1,3,1]
 
-def all_indices(mylist,myitem):
+def all_indices(mylist,myitem): # a way to get all indices, not just first occurence. 
 	indices=[]
 	for index, item in enumerate(mylist):
 		if item==myitem:
@@ -79,7 +79,7 @@ mydict.update(new_a_value)
 # LIFO - Last in first out		
 
 mystack=letters
-mystack.pop()
+mystack.pop() # removes last entry, returns value
 
 ###				Queue				###
 

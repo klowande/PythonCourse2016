@@ -10,7 +10,7 @@ mylist=[]
 for x in items: 
 	mylist.append(sqr(x))
 	
-mylist=map(sqr, items)
+mylist=map(sqr, items) # like apply
 mylist=map((lambda x: x **2), items)
 
 funcs = [sqr, cub]
@@ -42,6 +42,6 @@ print f(42), g(42)
 nums = range(2, 50) 
 for i in range(2, 8): 
     nums = filter(lambda x: x == i or x % i, nums)
-
+# function that returns prime numbers.
 print nums
 
