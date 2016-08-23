@@ -10,8 +10,13 @@ mylist=[]
 for x in items: 
 	mylist.append(sqr(x))
 	
+<<<<<<< HEAD
 mylist=map(sqr, items) # like apply
 mylist=map((lambda x: x **2), items)
+=======
+mylist=map(sqr, items)
+mylist=map(lambda x: x **2, items)
+>>>>>>> carlson9/master
 
 funcs = [sqr, cub]
 for i in items:
