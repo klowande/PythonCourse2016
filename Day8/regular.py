@@ -25,7 +25,11 @@ re.findall(r'[A-Z]+.',mytext) # capital letter + any character that comes after 
 re.findall(r'\d',mytext)
 re.findall(r'\d+',mytext)
 re.findall(r'\d+.',mytext)
+<<<<<<< HEAD
 re.findall(r'\d+.*',mytext) # * is as many instances of that as there are. don't use this.
+=======
+re.findall(r'\d*',mytext)
+>>>>>>> carlson9/master
 re.findall(r'\d+.*\w',mytext)
 re.findall(r'\d\w',mytext)
 re.findall(r'(\d+\S*)',mytext)
@@ -58,7 +62,11 @@ re.findall(r'^b\w*',mytext,re.MULTILINE)
 
 mytext = 'a1b2c3D'
 
+<<<<<<< HEAD
 re.match(r'\d',mytext) #matches the pattern at the beginning of the string (digit at the beginning, which is not there.)
+=======
+re.match(r'[a-z]',mytext) #matches the pattern at the beginning of the string
+>>>>>>> carlson9/master
 re.search(r'\d',mytext) #looks for the pattern anywhere in the string
 
 #math and search
