@@ -33,13 +33,7 @@ re.findall(r'(\d+\S*)',mytext)
 
 
 
-# compile the regular expression
-keyword = re.compile(r"the ")
-
-# search file for keyword, line by line
-for line in text:
-  if keyword.search(line):
-    print line 
+# compile the regular expressio
 
 #re.compile
 

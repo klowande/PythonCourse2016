@@ -38,7 +38,15 @@ calendar=['Month: ','Day: ','Year: ']
 for i in range(1,4): print '%s%s' % (calendar[i-1],mysearch.group(i))
 
 # TODO: Write a regular expression that finds html tags in example.html and print them.
+import urllib2 
+from bs4 import BeautifulSoup
 
+web_address='http://www.andrewjclarke.net/research.html'
+web_page = urllib2.urlopen(web_address)
+soup = BeautifulSoup(web_page.read())
+page = str(soup)
+pattern = re.compile(r'href="(.+)"')
+pattern.findall(page)
 
 # TODO: Scrape a website and search for some things...
 
