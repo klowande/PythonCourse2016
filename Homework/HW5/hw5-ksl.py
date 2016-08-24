@@ -10,7 +10,7 @@ class Node(object):
 		return self.value
 		
 	def point(self):
-		return self.point
+		return Node(self.point)
 	
 	def link(self,new_point):
 		self.point = new_point
@@ -24,7 +24,7 @@ class Node(object):
 class sll(object):
 	def __init__(self, value):
 		self.head = Node(value)
-		self.end = Node(value)
+		self.end = self.head
 		self.count = 1
 		
 	def length(self):
@@ -38,12 +38,10 @@ class sll(object):
 # in-progress
 		
 	def __str__(self):
-		start = Node(self.head)
-		counter = 1
-		while counter != self.count:
+		start = self.head
+		while start.data != self.end.data:
 			print str(start) + '-->'
-			start = Node(start.point
-			counter += 1
+			start = start.point()
 
 # uncoded
 	
