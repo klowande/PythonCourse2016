@@ -10,10 +10,10 @@ class Node(object):
 		return self.value
 		
 	def pointer(self):
-		return self.point
+		return Node(self.point)
 	
 	def link(self,new_point):
-		self.point = new_point
+		self.point = Node(new_point)
 	
 	def __str__(self):
 		return str(self.value)
@@ -35,17 +35,30 @@ class sll(object):
 		self.end = Node(new_value)
 		self.count +=1
 
-# in-progress
+# partially works
 		
-	def __str__(self):
+	def __str__(self): # works, but throws an error at the end.
+		counter = 0
 		start = self.head
-		while start.data != self.end.data:
+		while counter != self.count:
 			print str(start) + '-->'
-			start = start.point
+			start = start.pointer()
+			counter += 1
 
-# uncoded
+# in progress
 	
 	def addNodeAfter(self, new_value, after_node):
+		self.node = Node(after_node)
+		self.node.link(new_value)
+		self.new_node = Node(new_value)
+		self.count +=1
+		
+a = sll(1)
+a.addNode(2)
+a.addNodeAfter(3,2)
+
+
+# uncoded
 	
 	def addNodeBefore(self, new_value, before_node):
 	

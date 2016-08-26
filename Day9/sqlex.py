@@ -11,16 +11,16 @@ from sqlalchemy.orm import relationship, backref, sessionmaker
 print sqlalchemy.__version__
 
 #Connect to the local database, can use :memory: to just try it out in memory by leaving URL empty
-engine = sqlalchemy.create_engine('sqlite:////home/david/PythonCourse2016/Day9/players.db', echo=True)
+engine = sqlalchemy.create_engine('sqlite:////Users/kslowande/Box Sync/WUSTL Postdoc/Python Course/PythonCourse2016/Day9/players.db', echo=True)
 
 Base = declarative_base() 
 
-#Define some schemas
+#Define some schemas - 'creating an empty table'
 class Player(Base):
   __tablename__ = 'players'
   
   #Have an ID column because player attributes (name, etc) are not unique
-  id = Column(Integer, primary_key=True)
+  id = Column(Integer, primary_key=True) # needs to be a unique identifier.
   name = Column(String)
   number = Column(Integer)
   
@@ -58,7 +58,7 @@ Player.__table__
 
 #Create a player
 mason = Player("Mason Plumlee", 5)
-print str(mason.id)
+print str(mason.id) # they don't get one until we create a session
 
 #Create a session to actually store things in the db
 Session = sessionmaker(bind=engine)
@@ -74,7 +74,7 @@ session.add_all([
   Player("The other Plumlee", 100)
 ])
  
-# #Persist all of this information
+# commit all of this information - it's not final until this point.
 session.commit()
 print str(mason.id)
 mason.id
@@ -141,7 +141,7 @@ session.delete(seth)
 session.query(Player).filter(Player.number == 30).count()
 session.query(Player).filter(Player.name.like("%Seth%")).count()
 players
-players = session.query(Player).all()
+players = session.query(Player).all() # deletion isn't final until re-querying
 players 
 
 #Updating
@@ -150,7 +150,7 @@ other_plumlee.name = "Marshall Plumlee"
 session.dirty #what has changed?
 session.commit()
 session.dirty
-# 
+ 
 # How to convert data to csv
 players = session.query(Player).all()
 for player in players:
