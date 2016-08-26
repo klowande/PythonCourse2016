@@ -9,8 +9,8 @@ class Node(object):
 	def data(self):
 		return self.value
 		
-	def point(self):
-		return Node(self.point)
+	def pointer(self):
+		return self.point
 	
 	def link(self,new_point):
 		self.point = new_point
@@ -41,7 +41,7 @@ class sll(object):
 		start = self.head
 		while start.data != self.end.data:
 			print str(start) + '-->'
-			start = start.point()
+			start = start.point
 
 # uncoded
 	
