@@ -5,60 +5,48 @@ class Node(object):
 	def __init__(self, _value=None, _point=None):
 		self.value = _value
 		self.point = _point
-	
-	def data(self):
-		return self.value
 		
-	def pointer(self):
-		return Node(self.point)
-	
-	def link(self,new_point):
-		self.point = Node(new_point)
-	
 	def __str__(self):
 		return str(self.value)
 		
-	def __repr__(self):
-		return str(self.value)
-
 class sll(object):
 	def __init__(self, value):
 		self.head = Node(value)
 		self.end = self.head
 		self.count = 1
 		
-	def length(self):
+	def length(self): # get the length of the list
 		return self.count
-	
-	def addNode(self, new_value):
-		self.end.link(new_value)
-		self.end = Node(new_value)
-		self.count +=1
-
-# partially works
 		
-	def __str__(self): # works, but throws an error at the end.
-		counter = 0
+	def addNode(self, new_value): # add a node to the end
+		node = Node(new_value)
+		self.end = node
+		self.count +=1
+		
+	def __str__(self): # print all the nodes
+		sllist = ''
 		start = self.head
-		while counter != self.count:
-			print str(start) + '-->'
-			start = start.pointer()
-			counter += 1
-
-# in progress
+		while start:
+			sllist += str(start) + ' --> '
+			start = start.point
+		sllist += str(self.end)
+		return sllist
 	
-	def addNodeAfter(self, new_value, after_node):
-		self.node = Node(after_node)
-		self.node.link(new_value)
-		self.new_node = Node(new_value)
-		self.count +=1
+#	def addNodeAfter(self, new_value, after_node):
 		
+	
+	
 a = sll(1)
-a.addNode(2)
-a.addNodeAfter(3,2)
+a.length()
+a.addNode(4)
+a.addNode(5)
+a.addNode(6)
+print a
 
 
 # uncoded
+
+	def addNodeAfter(self, new_value, after_node):
 	
 	def addNodeBefore(self, new_value, before_node):
 	
@@ -73,11 +61,3 @@ a.addNodeAfter(3,2)
 # implementation is and state whether or not you think that is the best possible complexity class.
 
 # Make sure that your implementation is correct and robust to bad inputs.
-
-
-# test code
-a = LinkedList(12)
-a.head
-a.addNode(13)
-a.length()
-print a # not functional
